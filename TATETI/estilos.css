@@ -1,0 +1,24 @@
+body{
+    background-color: #7CABFF;
+}
+
+.tablero{
+    background-color: #B766E8;
+    width: 50vw;
+    height: 50vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    margin: auto;
+    margin-top: 10%;
+    border: 1px solid #FFB8B5;
+}
+
+p{
+    border: 1px solid #B8FF70;
+    margin: auto;
+    width: 90%;
+    height: 90%;
+    font-size: xx-large;
+    color: #66E8B9;
+}
