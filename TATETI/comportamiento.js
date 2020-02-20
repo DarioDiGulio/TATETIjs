@@ -1,21 +1,21 @@
 var letraInicialObtenida;
 var ultimaLetraJugada;
 var contadorDeJugadas = 0;
-var ganador           = '';
-var CUADRANTE_UNO     = document.getElementById('1');
-var CUADRANTE_DOS     = document.getElementById('2');
-var CUADRANTE_TRES    = document.getElementById('3');
-var CUADRANTE_CUATRO  = document.getElementById('4');
-var CUADRANTE_CINCO   = document.getElementById('5');
-var CUADRANTE_SEIS    = document.getElementById('6');
-var CUADRANTE_SIETE   = document.getElementById('7');
-var CUADRANTE_OCHO    = document.getElementById('8');
-var CUADRANTE_NUEVE   = document.getElementById('9');
+var ganador = '';
+var CUADRANTE_UNO = document.getElementById('1');
+var CUADRANTE_DOS = document.getElementById('2');
+var CUADRANTE_TRES = document.getElementById('3');
+var CUADRANTE_CUATRO = document.getElementById('4');
+var CUADRANTE_CINCO = document.getElementById('5');
+var CUADRANTE_SEIS = document.getElementById('6');
+var CUADRANTE_SIETE = document.getElementById('7');
+var CUADRANTE_OCHO = document.getElementById('8');
+var CUADRANTE_NUEVE = document.getElementById('9');
 
 function obtenerLetraInicial() {
     let letraInicial;
 
-    if (esPar(obtenerNumeroAleatoreo())) { 
+    if (esPar(obtenerNumeroAleatoreo())) {
         letraInicial = 'X';
         ultimaLetraJugada = 'X';
     } else {
@@ -34,7 +34,7 @@ function obtenerNumeroAleatoreo() {
     return Math.random() * 10 + 1;
 }
 
-function jugada(id){
+function jugada(id) {
     if (estaVacio(id)) {
         if (!hayGanador()) {
             jugar(id);
@@ -51,30 +51,90 @@ function estaVacio(id) {
 }
 
 function hayGanador() {
-    
-    if (contadorDeJugadas >= 4 ) {
-        ganador = buscarGanadorFilaUno();
-        ganador = buscarGanadorFilaDos();
-        ganador = buscarGanadorFilaTres();
+
+    if (contadorDeJugadas > 4) {
+        ganador = buscarGanadorEnFilas();
+        if (ganador !== '') {
+            ganador = buscarGanadorEnColumnas();
+        } else {
+            ganador = buscarGanadorEndiagonales();
+        }
     }
 
-    return ganador  !== '';
+    return ganador !== '';
+}
+
+function buscarGanadorEndiagonales() {
+    ganador = buscarGanadorEnDiagonalA();
+    ganador = buscarGanadorEnDiagonalB();
+}
+
+function buscarGanadorEnDiagonalA() {
+    if (CUADRANTE_UNO.innerText === CUADRANTE_CINCO.innerText) {
+        if (CUADRANTE_CINCO.innerText === CUADRANTE_NUEVE.innerText) {
+            ganador = CUADRANTE_CINCO.innerText;
+        }
+    }
+}
+
+function buscarGanadorEnDiagonalB() {
+    if (CUADRANTE_TRES.innerText === CUADRANTE_CINCO.innerText) {
+        if (CUADRANTE_CINCO.innerText === CUADRANTE_SIETE.innerText) {
+            ganador = CUADRANTE_TRES.innerText;
+        }
+    }
+}
+
+function buscarGanadorEnColumnas() {
+    ganador = buscarGanadorColumnaUno();
+    ganador = buscarGanadorColumnaDos();
+    ganador = buscarGanadorColumnaTres();
+}
+
+function buscarGanadorColumnaUno() {
+    if (CUADRANTE_UNO.innerText === CUADRANTE_CUATRO.innerText) {
+        if (CUADRANTE_CUATRO.innerText === CUADRANTE_SIETE.innerText) {
+            ganador = CUADRANTE_UNO.innerText;
+        }
+    }
+}
+
+function buscarGanadorColumnaDos() {
+    if (CUADRANTE_DOS.innerText === CUADRANTE_CINCO.innerText) {
+        if (CUADRANTE_CINCO.innerText === CUADRANTE_OCHO.innerText) {
+            ganador = CUADRANTE_CINCO.innerText;
+        }
+    }
+}
+
+function buscarGanadorColumnaTres() {
+    if (CUADRANTE_TRES.innerText === CUADRANTE_SEIS.innerText) {
+        if (CUADRANTE_SEIS.innerText === CUADRANTE_NUEVE.innerText) {
+            ganador = CUADRANTE_NUEVE.innerText;
+        }
+    }
+}
+
+function buscarGanadorEnFilas() {
+    ganador = buscarGanadorFilaUno();
+    ganador = buscarGanadorFilaDos();
+    ganador = buscarGanadorFilaTres();
 }
 
 function buscarGanadorFilaUno() {
     if (CUADRANTE_UNO.innerText === CUADRANTE_DOS.innerText) {
         if (CUADRANTE_DOS.innerText === CUADRANTE_TRES.innerText) {
-                ganador = CUADRANTE_DOS.innerText;
+            ganador = CUADRANTE_DOS.innerText;
         }
-    }    
+    }
 }
 
 function buscarGanadorFilaDos() {
     if (CUADRANTE_CUATRO.innerText === CUADRANTE_CINCO.innerText) {
         if (CUADRANTE_CINCO.innerText === CUADRANTE_SEIS.innerText) {
-                ganador = CUADRANTE_CINCO.innerText;
+            ganador = CUADRANTE_CINCO.innerText;
         }
-    }    
+    }
 }
 
 function buscarGanadorFilaTres() {
@@ -82,15 +142,15 @@ function buscarGanadorFilaTres() {
         if (CUADRANTE_OCHO.innerText === CUADRANTE_NUEVE.innerText) {
             ganador = CUADRANTE_OCHO.innerText;
         }
-    }    
+    }
 }
 
 function jugar(id) {
     if (ultimaLetraJugada === 'X') {
-        document.getElementById(id).innerText = 'O';
+        document.getElementById(id).textContent = 'O';
         ultimaLetraJugada = 'O';
     } else {
-        document.getElementById(id).innerText = 'X';
+        document.getElementById(id).textContent = 'X';
         ultimaLetraJugada = 'X';
     }
 }
@@ -103,7 +163,7 @@ function reiniciar() {
     let cuadrantes = document.getElementsByClassName('cuadrante');
 
     for (let i = 0; i < cuadrantes.length; i++) {
-        cuadrantes[i].innerText = '';
+        cuadrantes[i].textContent = '';
     }
 
     ultimaLetraJugada = '';

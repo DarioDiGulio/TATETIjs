@@ -11,23 +11,42 @@
 
 <body>
     <h1>
-        TATETI by 
+        TATETI by
         <a href=""></a>
     </h1>
 
     <div class="tablero">
-        <p class="cuadrante" id="1" onclick="jugada(1)"></p>
-        <p class="cuadrante" id="2" onclick="jugada(2)"></p>
-        <p class="cuadrante" id="3" onclick="jugada(3)"></p>
-        <p class="cuadrante" id="4" onclick="jugada(4)"></p>
-        <p class="cuadrante" id="5" onclick="jugada(5)"></p>
-        <p class="cuadrante" id="6" onclick="jugada(6)"></p>
-        <p class="cuadrante" id="7" onclick="jugada(7)"></p>
-        <p class="cuadrante" id="8" onclick="jugada(8)"></p>
-        <p class="cuadrante" id="9" onclick="jugada(9)"></p>
+        <div class="cuadrante">
+            <p class="contenido-cuadrante" id="1" onclick="jugada(1)"></p>
+        </div>
+        <div class="cuadrante">
+            <p class="contenido-cuadrante" id="2" onclick="jugada(2)"></p>
+        </div>
+        <div class="cuadrante">
+            <p class="contenido-cuadrante" id="3" onclick="jugada(3)"></p>
+        </div>
+        <div class="cuadrante">
+            <p class="contenido-cuadrante" id="4" onclick="jugada(4)"></p>
+        </div>
+        <div class="cuadrante">
+            <p class="contenido-cuadrante" id="5" onclick="jugada(5)"></p>
+        </div>
+        <div class="cuadrante">
+            <p class="contenido-cuadrante" id="6" onclick="jugada(6)"></p>
+        </div>
+        <div class="cuadrante">
+            <p class="contenido-cuadrante" id="7" onclick="jugada(7)"></p>
+        </div>
+        <div class="cuadrante">
+            <p class="contenido-cuadrante" id="8" onclick="jugada(8)"></p>
+        </div>
+        <div class="cuadrante">
+            <p class="contenido-cuadrante" id="9" onclick="jugada(9)"></p>
+        </div>
     </div>
-
-    <button onclick="reiniciar()">Reiniciar</button>
+    <div id="container-boton-reiniciar">
+        <button onclick="reiniciar()">Reiniciar</button>
+    </div>
     <script src="comportamiento.js"></script>
 </body>
 

@@ -4,7 +4,7 @@ body{
 
 .tablero{
     background-color: #B766E8;
-    width: 50vw;
+    width: 23vw;
     height: 50vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -14,11 +14,11 @@ body{
     border: 1px solid #FFB8B5;
 }
 
-p{
+.cuadrante{
     border: 1px solid #B8FF70;
     margin: auto;
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     font-size: xx-large;
     color: #66E8B9;
 }
@@ -34,4 +34,11 @@ button{
     border-color: #B8FF70;
     border-radius: 10px;
     outline: none;
+    float: right; 
+}
+
+p{
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
